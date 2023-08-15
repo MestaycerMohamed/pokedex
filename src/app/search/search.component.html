@@ -1,0 +1,21 @@
+<div class="global-container">
+    <div class="card-container d-flex justify-content-center align-items-center">
+        <div class="card">
+            <div class="row row-img d-flex justify-content-center align-items-center"> 
+                <img class="icon-img" src="..\..\assets\img\icon-search.svg" alt=""/>
+            </div>
+            <div class="row row-text-search"> 
+                <label class="text-search" for="searchInput">Pokemon Name or Id</label>
+            </div>
+            <div class="row"> 
+                <input type="text" [(ngModel)]="nameId" autocomplete="off" id="searchInput" class="form-control  search-input"/>
+            </div>
+            <div class="row row-btn-search d-flex justify-content-between align-items-center">
+                <button type="button" id="Search" class="btn btn-search" (click)="search()">Search</button>
+                <button type="button" id="Random" class="btn btn-search" (click)="random()">Random</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+

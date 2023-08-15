@@ -1,0 +1,67 @@
+
+<div class="global-container" [style.background-color]="pokemon.color">
+    <div class="container d-flex flex-column align-items-center">
+        <img alt="" [src]="pokemon.imgUrl" class="pokemonImg">
+        <label class="pokemonName">{{pokemon.name}}</label>
+        <div class="pokemonTypes d-flex justify-content-center align-items-center">
+            <div *ngFor="let type of pokemon.types">
+                <div class="pokemonType d-flex justify-content-center align-items-center" [style.background-color]="getcolorfromcolorslist(type.type.name)" >
+                    {{type.type.name}}
+                </div>
+            </div>
+        </div>
+        <div class="description d-flex justify-content-center">
+            <label class="descriptionLabel">{{pokemon.description}}</label>
+        </div>
+        <div class="statsEvolutionsMoves">
+            <div class="row-btns d-flex justify-content-around">
+                <div class="btn" [style]="getButtonTabStyle('STATS')" (click)="setActiveTab('STATS')" type="button">
+                    STATS
+                </div>
+                <div class="btn" [style]="getButtonTabStyle('EVOLUTIONS')" (click)="setActiveTab('EVOLUTIONS')" type="button">
+                    EVOLUTIONS
+                </div>
+                <div class="btn" [style]="getButtonTabStyle('MOVES')" (click)="setActiveTab('MOVES')" type="button">
+                    MOVES
+                </div>
+            </div>
+            <div class="tabs-container">
+                <div *ngIf="activeTab === 'STATS'">
+                    <div class="row" *ngFor="let stat of pokemon.stats">
+                        <div class="col-1 offset-3 d-flex justify-content-end">
+                            <label [style.color]="pokemon.color">{{stat.name | statName}}</label>
+                        </div>
+                        <div class="col-1 d-flex justify-content-center">
+                            <label >{{stat.value | number:'3.0-0'}}</label>
+                        </div>
+                        <div class="col-4 ">
+                            <div class="progress">
+                                <div class="progress-bar" [style.background-color]="pokemon.color" role="progressbar" [style.width]="stat.value+'%'" [attr.aria-valuenow]="stat.value" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div *ngIf="activeTab === 'EVOLUTIONS'" class="d-flex justify-content-center">
+                    <div *ngFor="let p of pokemon.evolChain; let last = last" class="d-flex justify-content-start align-items-center">
+                        <div class="card d-flex justify-content-center align-items-center flex-column" >
+                            <img [src]="p.imgUrl" class="card-img-top" alt="">
+                            <div class="card-body">
+                                <h5 class="card-title">{{p.name}}</h5>
+                            </div>
+                        </div>
+                        <svg *ngIf="!last" xmlns="http://www.w3.org/2000/svg" width="98" height="12" viewBox="0 0 98 12" fill="none">
+                            <path d="M2 6H95.0388" [attr.stroke]="pokemon.color" stroke-width="4" stroke-linecap="round"/>
+                            <path d="M91.5 2.28744L95.0388 6" [attr.stroke]="pokemon.color" stroke-width="4" stroke-linecap="round"/>
+                            <path d="M91.5 9.28744L95.0388 6" [attr.stroke]="pokemon.color" stroke-width="4" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                </div>
+                <div *ngIf="activeTab === 'MOVES'">
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>

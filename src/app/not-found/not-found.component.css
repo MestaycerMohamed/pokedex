@@ -1,0 +1,24 @@
+div.global-container{
+    background: #FE5858;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+}
+.container{
+    height: 100%;
+    width: 100%;
+}
+.noPokemonLabel{
+    color: #FFF;
+    /*font-family: Single Day;*/
+    font-size: 4.6875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.noPokemonImg{
+    width: 22.5rem;
+    height: 30rem
+
+}
